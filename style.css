@@ -1,0 +1,849 @@
+:root {
+  --bg: #edf4fb;
+  --surface: #ffffff;
+  --surface-soft: #f4f9ff;
+  --surface-strong: #eaf2ff;
+  --text: #1f2f43;
+  --text-soft: #5f7187;
+  --shadow-main: 0 20px 44px rgba(33, 71, 115, 0.14);
+  --shadow-soft: 0 10px 22px rgba(33, 71, 115, 0.1);
+  --radius-xl: 34px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --brand-green: #8a9a6e;
+  --brand-brown: #a3835c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(8px, 2vw, 20px);
+  overflow: hidden;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 8%, #e8f3ff 0%, transparent 30%),
+    radial-gradient(circle at 90% 92%, #e8fff4 0%, transparent 28%),
+    var(--bg);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.app-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background:
+    radial-gradient(circle at 10% 8%, #e8f3ff 0%, transparent 30%),
+    radial-gradient(circle at 90% 92%, #e8fff4 0%, transparent 28%),
+    var(--bg);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.splash-screen.splash-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-logo {
+  width: clamp(80px, 16vw, 140px);
+  height: clamp(80px, 16vw, 140px);
+  object-fit: contain;
+}
+
+.splash-title {
+  margin: 6px 0 0;
+  font-size: clamp(1.8rem, 8vw, 3rem);
+  letter-spacing: 0.16em;
+  font-weight: 800;
+}
+
+.splash-tagline {
+  margin: 0;
+  font-size: clamp(0.85rem, 3vw, 1.1rem);
+  font-weight: 600;
+  color: var(--brand-green);
+  text-align: center;
+  padding: 0 16px;
+}
+
+.splash-mascot {
+  width: clamp(160px, 32vw, 300px);
+  height: clamp(160px, 32vw, 300px);
+  object-fit: contain;
+  margin-top: 10px;
+  animation: mascot-jump 1s ease-in-out infinite;
+}
+
+@keyframes mascot-jump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-30px) scale(1.05, 0.95); }
+  50% { transform: translateY(0) scale(0.95, 1.05); }
+  70% { transform: translateY(-10px) scale(1.02, 0.98); }
+}
+
+.app-shell {
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-main);
+  padding: clamp(12px, 3vw, 20px);
+  display: grid;
+  grid-template-columns: minmax(200px, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(8px, 2vw, 14px);
+}
+
+.brand-nu {
+  color: var(--brand-green);
+}
+
+.brand-voz {
+  color: var(--brand-brown);
+}
+
+.app-logo {
+  width: clamp(34px, 10vw, 56px);
+  height: clamp(34px, 10vw, 56px);
+  object-fit: contain;
+}
+
+.app-tagline {
+  margin: 3px 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--brand-green);
+}
+
+.app-subtitle {
+  margin: 3px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: clamp(8px, 2vw, 14px);
+}
+
+.brand-row {
+  display: flex;
+  align-items: stretch;
+  min-height: clamp(56px, 9vw, 80px);
+  gap: clamp(8px, 2vw, 12px);
+}
+
+.logo-box {
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  box-shadow: var(--shadow-soft);
+  padding: 10%;
+}
+
+.name-box {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  box-shadow: var(--shadow-soft);
+  padding: 8px 10px;
+}
+
+.brand-box-name {
+  margin: 0;
+  font-size: clamp(0.8rem, 2.4vw, 1.1rem);
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.lang-toggle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(38px, 8vw, 50px);
+  border: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #6a8ffb, #63c8b3);
+  color: #ffffff;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  transform: translateY(-1px);
+}
+
+.message-panel,
+.grid-panel {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(10px, 2.4vw, 14px);
+}
+
+.message-panel {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: clamp(6px, 1.5vw, 12px);
+  background: #e8f0fb;
+}
+
+.message-panel h2,
+.grid-panel h2 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+
+.mascot {
+  width: clamp(56px, 16vw, 108px);
+  height: clamp(56px, 16vw, 108px);
+  object-fit: contain;
+  flex-shrink: 0;
+  animation: mascot-idle 2.6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.mascot.mascot-active {
+  animation: mascot-bounce 0.6s ease;
+}
+
+@keyframes mascot-idle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-2deg); }
+}
+
+@keyframes mascot-bounce {
+  0% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-14px) scale(1.08); }
+  60% { transform: translateY(2px) scale(0.97); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.message-box-wrap {
+  width: min(380px, 92%);
+  position: relative;
+}
+
+.message-box {
+  width: 100%;
+  max-width: min(380px, 92%);
+  min-height: clamp(64px, 13vw, 108px);
+  padding: clamp(8px, 2vw, 12px);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #e9f1fc 0%, #e5eefb 100%);
+  border: 1px solid #cedcf0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  color: #2b4f83;
+  font-size: clamp(0.82rem, 2.2vw, 0.94rem);
+  font-weight: 600;
+  line-height: 1.38;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+  position: relative;
+  z-index: 2;
+}
+
+.message-ghost-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+  color: #95afd6;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.message-actions {
+  margin-top: 12px;
+  width: min(380px, 92%);
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn-primary,
+.btn-secondary {
+  border: 0;
+  border-radius: 999px;
+  padding: clamp(8px, 2vw, 10px) clamp(10px, 2.6vw, 14px);
+  font-size: clamp(0.76rem, 2vw, 0.86rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-secondary:hover,
+.btn-secondary:focus-visible,
+.tile-btn:hover,
+.tile-btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  flex: 1;
+  max-width: 176px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6a8ffb, #63c8b3);
+  box-shadow: 0 8px 16px rgba(90, 140, 217, 0.2);
+}
+
+.btn-secondary {
+  flex: 1;
+  max-width: 176px;
+  color: #334a66;
+  background: #e7effa;
+}
+
+.message-hint {
+  margin: 10px 0 0;
+  width: min(380px, 92%);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #78889b;
+}
+
+.grid-panel {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f6faff 0%, #f2f8ff 100%);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.panel-head .btn-secondary {
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  max-width: none;
+  flex: 0 0 auto;
+}
+
+/* El botón "Volver" necesita destacar más que el resto: se usa mucho para
+   navegar y con el estilo secundario apenas se distinguía del fondo. */
+#backToCategories {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-size: clamp(0.82rem, 2.2vw, 0.94rem);
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff9a56, #ff7a45);
+  box-shadow: 0 8px 18px rgba(255, 122, 69, 0.32);
+}
+
+#backToCategories::before {
+  content: "←";
+  font-weight: 800;
+}
+
+#backToCategories:hover,
+#backToCategories:focus-visible {
+  box-shadow: 0 10px 20px rgba(255, 122, 69, 0.42);
+}
+
+.app-grid {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  /* Fijo a 3 columnas: cada categoría tiene 6 elementos, así que siempre
+     se reparten en filas de 3, sin importar lo ancha que sea la pantalla. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(clamp(100px, 13vw, 155px), 1fr);
+  gap: clamp(8px, 2vw, 12px);
+  align-content: stretch;
+}
+
+/* Al ver las palabras de una categoría, las filas se reparten todo el alto
+   disponible en vez de quedarse al tamaño mínimo, para que las casillas
+   aprovechen el espacio libre de la pantalla. */
+.app-grid.app-grid--words {
+  grid-auto-rows: minmax(0, 1fr);
+  align-content: stretch;
+}
+
+.tile-btn {
+  min-height: 60px;
+  border: 0;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 8px 16px rgba(67, 106, 158, 0.12);
+  color: var(--text);
+  cursor: pointer;
+  padding: 10px 8px;
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 600;
+}
+
+.tile-btn span {
+  font-size: clamp(0.72rem, 2vw, 0.84rem);
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.tile-btn.category {
+  height: 100%;
+  padding: 8% 10%;
+  overflow: hidden;
+  grid-template-rows: 1fr auto;
+  gap: 6px;
+  font-size: 0;
+}
+
+.tile-btn.category::before {
+  content: "";
+  width: 72%;
+  height: 100%;
+  min-height: 0;
+  margin: 0 auto;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.tile-btn.category span {
+  font-size: clamp(0.68rem, 2vw, 0.82rem);
+  color: #4d5f74;
+}
+
+.dactylo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  margin-top: 4px;
+  max-width: 100%;
+}
+
+.dactylo-letter {
+  height: clamp(18px, 4vw, 26px);
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(31, 47, 67, 0.18);
+}
+
+.dactylo-space {
+  width: 8px;
+  flex-shrink: 0;
+}
+
+.tile-btn.category[data-category="Personas"]::before {
+  background-image: url("img/personas.png");
+}
+
+.tile-btn.category[data-category="Comida"]::before {
+  background-image: url("img/comida.png");
+}
+
+.tile-btn.category[data-category="Lugares"]::before {
+  background-image: url("img/lugares.png");
+}
+
+.tile-btn.category[data-category="Actividades"]::before {
+  background-image: url("img/actividades.png");
+}
+
+.tile-btn.category[data-category="Sentimientos"]::before {
+  background-image: url("img/sentimientos.png");
+}
+
+.tile-btn.category[data-category="Frases"]::before {
+  background-image: url("img/frases.png");
+}
+
+.tile-btn.word {
+  min-height: clamp(130px, 28vw, 180px);
+  height: 100%;
+  border-radius: 18px;
+  color: #27466b;
+  box-shadow: 0 8px 16px rgba(80, 120, 170, 0.13);
+  gap: 4px;
+  padding: 10px 6px;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+}
+
+.tile-btn.word:nth-child(6n + 1) {
+  background: linear-gradient(180deg, #edf5ff 0%, #e3eeff 100%);
+}
+
+.tile-btn.word:nth-child(6n + 2) {
+  background: linear-gradient(180deg, #fff6ea 0%, #ffedd8 100%);
+}
+
+.tile-btn.word:nth-child(6n + 3) {
+  background: linear-gradient(180deg, #edfdf5 0%, #e2f7ec 100%);
+}
+
+.tile-btn.word:nth-child(6n + 4) {
+  background: linear-gradient(180deg, #fef0f7 0%, #fbe6f1 100%);
+}
+
+.tile-btn.word:nth-child(6n + 5) {
+  background: linear-gradient(180deg, #f5f1ff 0%, #ede6ff 100%);
+}
+
+.tile-btn.word:nth-child(6n + 6) {
+  background: linear-gradient(180deg, #eefaff 0%, #e2f3ff 100%);
+}
+
+.word-icon {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-width: 92%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: 0 auto 1px;
+}
+
+.tile-btn.word span {
+  font-size: clamp(0.8rem, 2.4vw, 0.95rem);
+  font-weight: 700;
+  color: #35557b;
+}
+
+/* Botón de acceso al abecedario dactilológico, en la columna izquierda. */
+.alphabet-access-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.6vw, 10px);
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: clamp(8px, 2vw, 11px) clamp(10px, 2.6vw, 16px);
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  box-shadow: var(--shadow-soft);
+  color: #2b4f83;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: clamp(0.78rem, 2.1vw, 0.92rem);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.alphabet-access-btn:hover,
+.alphabet-access-btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.alphabet-hand-icon {
+  width: clamp(22px, 5.5vw, 30px);
+  height: clamp(22px, 5.5vw, 30px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Pantalla independiente con el abecedario dactilológico completo. */
+.alphabet-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(10px, 3vw, 24px);
+  background:
+    radial-gradient(circle at 10% 8%, #e8f3ff 0%, transparent 30%),
+    radial-gradient(circle at 90% 92%, #e8fff4 0%, transparent 28%),
+    var(--bg);
+}
+
+.alphabet-screen[hidden] {
+  display: none;
+}
+
+.alphabet-panel {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-main);
+  padding: clamp(14px, 3vw, 26px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vw, 16px);
+}
+
+.alphabet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.alphabet-head h2 {
+  margin: 0;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 800;
+  color: var(--text);
+}
+
+.alphabet-back-btn {
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: clamp(0.82rem, 2.2vw, 0.94rem);
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff9a56, #ff7a45);
+  box-shadow: 0 8px 18px rgba(255, 122, 69, 0.32);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.alphabet-back-btn:hover,
+.alphabet-back-btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(255, 122, 69, 0.42);
+}
+
+.alphabet-grid {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(64px, 9vw, 104px), 1fr));
+  /* Las filas se reparten todo el alto disponible (como las casillas de
+     palabras) en vez de quedarse al tamaño mínimo, para aprovechar la pantalla. */
+  grid-auto-rows: minmax(clamp(64px, 9vw, 104px), 1fr);
+  gap: clamp(8px, 1.6vw, 14px);
+  align-content: stretch;
+}
+
+.alphabet-letter-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  border: 0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 6px 14px rgba(67, 106, 158, 0.12);
+  padding: 8%;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.alphabet-letter-btn:hover,
+.alphabet-letter-btn:focus-visible {
+  transform: translateY(-2px);
+}
+
+.alphabet-letter-img {
+  width: 100%;
+  height: 68%;
+  object-fit: contain;
+}
+
+.alphabet-letter-label {
+  font-size: clamp(0.85rem, 2.2vw, 1.05rem);
+  font-weight: 800;
+  color: #35557b;
+}
+
+/* Barra inferior de la pantalla del abecedario: lo que se va escribiendo,
+   más los botones de espacio y borrar letra, como en un teclado. */
+.alphabet-controls {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.6vw, 12px);
+}
+
+.alphabet-preview {
+  width: 100%;
+  min-height: clamp(46px, 9vw, 60px);
+  padding: clamp(10px, 2vw, 14px) clamp(14px, 2.6vw, 18px);
+  border-radius: 20px;
+  background: linear-gradient(180deg, #e9f1fc 0%, #e5eefb 100%);
+  border: 1px solid #cedcf0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  color: #2b4f83;
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  word-break: break-word;
+}
+
+.alphabet-action-row {
+  display: flex;
+  gap: clamp(8px, 1.6vw, 12px);
+}
+
+.alphabet-space-btn,
+.alphabet-delete-btn {
+  flex: 1;
+  border: 0;
+  border-radius: 999px;
+  padding: clamp(10px, 2.2vw, 13px) clamp(12px, 2.6vw, 16px);
+  font-family: inherit;
+  font-size: clamp(0.82rem, 2.1vw, 0.95rem);
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.alphabet-space-btn:hover,
+.alphabet-space-btn:focus-visible,
+.alphabet-delete-btn:hover,
+.alphabet-delete-btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.alphabet-space-btn {
+  background: linear-gradient(135deg, #6a8ffb, #63c8b3);
+  box-shadow: 0 8px 16px rgba(90, 140, 217, 0.2);
+}
+
+.alphabet-delete-btn {
+  background: linear-gradient(135deg, #ff8a8a, #ff5c5c);
+  box-shadow: 0 8px 16px rgba(255, 92, 92, 0.25);
+}
+
+@media (max-width: 860px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  body {
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .app-bg {
+    height: auto;
+    min-height: calc(100vh - 40px);
+  }
+
+  .app-shell {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .message-panel {
+    flex: 1;
+  }
+
+  .grid-panel {
+    min-height: 420px;
+  }
+
+  .alphabet-screen {
+    position: static;
+    padding: 0;
+    min-height: calc(100vh - 40px);
+  }
+
+  .alphabet-panel {
+    height: auto;
+    min-height: calc(100vh - 40px);
+    border-radius: 26px;
+  }
+
+  .alphabet-grid {
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-shell {
+    border-radius: 26px;
+  }
+
+  /* En móvil, 3 columnas fijas dejan las casillas demasiado estrechas:
+     se pasa a 2 columnas (3 filas de 2) para las categorías y palabras. */
+  .app-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
